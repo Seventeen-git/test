@@ -1,0 +1,308 @@
+/*游戏开始 zhq 2019/5/28 start*/
+
+.game_start .game_container{
+    background-image: url("../img/bg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height:100vh;
+    position: relative;
+}
+.game_start .game_logo{
+    position: absolute;
+    top:.3rem;
+    right:.4rem;
+}
+.game_start .game_txt{
+    position: absolute;
+    top:1.2rem;
+    left:50%;
+    width: 6.2rem;
+    margin-left: -3.1rem;
+}
+.game_start .game_btn{
+    position: absolute;
+    bottom:.8rem;
+    left:50%;
+    width: 5.6rem;
+    margin-left: -2.8rem;
+}
+/*游戏开始 zhq 2019/5/28 end*/
+
+/*游戏界面 zhq 2019/5/28 start*/
+
+.game_conduct .conduct_container{
+    min-height:100vh;
+    background-image: url("../img/game_bg.png");
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border:.15rem solid #FFF;
+    position: relative;
+}
+.game_conduct .game_head{
+    height:1.2rem;
+    width: 1.2rem;
+    border: .06rem solid #858585;
+    border-radius: .6rem;
+    overflow: hidden;
+    position: absolute;
+    top:.2rem;
+    left:.3rem;
+}
+.game_conduct .game_time{
+    position: absolute;
+    height: .8rem;
+    width: 2rem;
+    top:.2rem;
+    left:50%;
+    margin-left: -1rem;
+    color: #FFF;
+    text-align: center;
+}
+.game_conduct .game_time .time_txt{
+    font-size: .32rem;
+}
+.game_conduct .game_time .time_second{
+    font-size: .4rem;
+    margin-top: .2rem;
+}
+.game_conduct .down_back{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+.game_conduct .down_back .downTime{
+    width: 100%;
+    text-align: center;
+    height: 2rem;
+    position: absolute;
+    top: 50%;
+    margin-top: -1rem;
+    font-size: 1rem;
+    line-height: 2rem;
+    color: #fff;
+}
+.game_conduct .goods {
+    width: .86rem;
+    height: auto;
+    position: fixed;
+    margin-left: -.43rem;
+    bottom: 100%;
+}
+.game_conduct .game_music{
+    position: absolute;
+    top: .3rem;
+    right: .3rem;
+    height:.7rem;
+    width: .7rem;
+}
+.game_conduct .game_music img{
+    height:100%;
+    width: 100%;
+}
+.game_conduct .car_box{
+    position: fixed;
+    left: 0;
+    bottom:.2rem;
+    height:.7rem;
+    width: 100%;
+    z-index: 20;
+}
+
+.game_conduct .game_car{
+    position: absolute;
+    bottom:.2rem;
+    left:50%;
+    width: 2.17rem;
+    margin-left: -1.07rem;
+    height: 100%;
+    top: 0;
+}
+
+.game_conduct .model{
+    position:fixed;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,0.6);
+    width:100vw;
+    height:100vh;
+    z-index:9999;
+}
+.game_conduct .model .model_container{
+    height:9rem;
+    width: 100%;
+    position: absolute;
+    top:50%;
+    margin-top: -4.5rem;
+    /*background-color: #f5f5f5;*/
+}
+.game_conduct .model .model_container .head_container{
+    width: 6.3rem;
+    height:1.6rem;
+    background-image: url("../img/success.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-top: 2rem;
+    position: absolute;
+    left:50%;
+    margin-left: -3.15rem;
+}
+.game_conduct .model .model_container .model_head{
+    width: 2rem;
+    height:2rem;
+    border-radius: 1rem;
+    border: .08rem solid #FFF;
+    /*box-shadow: 0px 0px 1rem .08rem #FFF;*/
+    box-shadow: 0px -.1rem 4rem .05rem #FFF;,
+    -.1rem 0px 4rem .05rem #FFF;,
+    .1rem 0px 4rem .05rem #FFF;
+    position: absolute;
+    left:50%;
+    margin-left: -1rem;
+    margin-top: -1.75rem;
+    overflow: hidden;
+}
+.game_conduct .model .model_container .model_head img{
+    height: 100%;
+    width: 100%;
+}
+.game_conduct .model .model_container .achievement{
+    width: 4rem;
+    font-size: .32rem;
+    color: #FFF;
+    margin-top: 3.8rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -2rem;
+    text-align: center;
+    letter-spacing: .03rem;
+}
+.game_conduct .model .model_container .optimum_achievement{
+    margin-top: .4rem;
+}
+.game_conduct .model .model_container .optimum_ranking{
+    margin-top: .2rem;
+}
+.game_conduct .model .model_container .btn_group{
+    width: 6.4rem;
+    position: absolute;
+    bottom:1rem;
+    left:50%;
+    margin-left: -3.1rem;
+
+}
+.game_conduct .model .model_container .btn_group .ranking_list{
+    width: 3rem;
+    height:1.2rem;
+}
+.game_conduct .model .model_container .btn_group .play_once{
+    width: 3rem;
+    height:1.2rem;
+}
+/*游戏界面 zhq 2019/5/29 end*/
+
+/*游戏排行 zhq 2019/5/29 start*/
+
+.game_ranking .rank_container{
+    min-height:100vh;
+    background-color: #FFFFFF;
+    position: relative;
+}
+.game_ranking .top_logo{
+    width: 100%;
+    height: 3rem;
+    background-image: url("../img/top_bg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+}
+.game_ranking .top_logo .update_time{
+    position: absolute;
+    top:2.4rem;
+    left: .4rem;
+    color:rgba(256,256,256,0.7);
+    font-size: .26rem;
+}
+.game_ranking .rank_header{
+    font-size: .32rem;
+    color: #969696;
+    margin-top: .5rem;
+    margin-left: .5rem;
+    height:.5rem;
+}
+.game_ranking .rank_header .rank_id{
+    margin-left: .8rem;
+}
+.game_ranking .rank_header .rank_integral{
+    margin-right: .6rem;
+}
+
+.game_ranking .game_play{
+    position: absolute;
+    top:4.5rem;
+    bottom:.5rem;
+    width: 100%;
+    overflow-y:auto;
+}
+.game_ranking .game_play .player_item{
+margin-bottom: .5rem;
+}
+.game_ranking .game_play .player_item .item_num{
+    width: .6rem;
+    height:.5rem;
+    margin-left: .5rem;
+    font-size: .32rem;
+    color: #d9d9d9;
+    text-align: center;
+    line-height: .5rem;
+    font-weight: 700;
+}
+.game_ranking .game_play .player_item:nth-child(1) .item_num{
+    width: .6rem;
+    height:.5rem;
+    margin-left: .5rem;
+    background-image: url("../img/frist.png");
+    background-size: 100% 100%;
+}
+.game_ranking .game_play .player_item:nth-child(2) .item_num{
+    width: .6rem;
+    height:.5rem;
+    margin-left: .5rem;
+    background-image: url("../img/second.png");
+    background-size: 100% 100%;
+}
+
+.game_ranking .game_play .player_item:nth-child(3) .item_num{
+    width: .6rem;
+    height:.5rem;
+    margin-left: .5rem;
+    background-image: url("../img/third.png");
+    background-size: 100% 100%;
+}
+.game_ranking .game_play .player_item .item_id{
+    margin-left: .8rem;
+}
+.game_ranking .game_play .player_item .item_id .item_img{
+    height: .6rem;
+    width: .6rem;
+    border-radius:.3rem;
+    overflow: hidden;
+
+}
+.game_ranking .game_play .player_item .item_id .item_name{
+    height:.6rem;
+    line-height: .6rem;
+    font-size: .38rem;
+    margin-left: .2rem;
+}
+.game_ranking .game_play .player_item .item_integral{
+    font-size: .38rem;
+    font-weight: 700;
+    margin-right: .6rem;
+}
+

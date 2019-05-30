@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>游戏内容</title>
+    <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/zhq.css"/>
+
+</head>
+<body class="game_conduct">
+<div class="conduct_container">
+<div class="game_head">
+    <img src="img/head.png" alt="">
+</div>
+    <div class="game_time">
+        <div class="time_txt">时间</div>
+        <div class="time_second">30</div>
+    </div>
+    <div class="down_back">
+        <div class="downTime">3</div>
+    </div>
+    <div class="game_music">
+        <img src="img/music.png" alt="">
+    </div>
+
+    <div class="car_box">
+        <div class="game_car">
+            <img src="img/car.png" alt="">
+        </div>
+    </div>
+</div>
+
+
+<div class="model hide">
+<div class="model_container">
+    <div class="head_container">
+        <div class="model_head">
+            <img src="img/head.png" alt="">
+        </div>
+    </div>
+    <div class="achievement">
+        <div class="your_achievement">您的成绩为:  <span class="score"></span></div>
+        <div class="optimum_achievement">最佳成绩为:  <span>160分</span></div>
+        <div class="optimum_ranking">最佳排名为:  <span>NO.12</span></div>
+    </div>
+    <div class="btn_group">
+        <div class="ranking_list l">
+            <img src="img/ranking.png" alt="">
+        </div>
+        <div class="play_once r">
+            <img src="img/again.png" alt="">
+        </div>
+    </div>
+
+</div>
+</div>
+</body>
+<script src="js/jquery-1.11.0.js"></script>
+<script src="js/urlparas.js"></script>
+<script src="js/mui.js"></script>
+<script src="js/common.js"></script>
+<script>
+    $(function() {
+
+        var downTime = 3; //预备倒计时
+        var time = 30; //游戏时间
+        var level = 3; //难度
+        var timeInt; //全局游戏时间倒计时
+        var start = false; //游戏变量
+        var width = $('.car_box').width(); //车运动宽度
+        var carWid = $('.game_car').width(); //车宽度
+        var score = 0; //得分
+        //    var goodsArr = ['../../resource/img/skygift/gift_car.png','../../resource/img/cut/dot_bg.png','boom']
+        var goodsArr = [{
+            img: 'img/yellow_envelopes.png',
+            score: 10
+        }, {
+            img: 'img/money.png',
+            score: 5
+        }, {
+            img: 'img/fish.png',
+            score: 5
+        }, {
+            img: 'boom',
+            score: 0
+        }]
+        var downInt = setInterval(function() {
+            if(downTime <= 1) {
+                clearInterval(downInt);
+                $('.downTime').html('开始');
+                setTimeout(function() {
+                    $('.down_back').remove();
+                    start = true;
+                    startGame();
+                }, 1000)
+            } else {
+                downTime--;
+                $('.downTime').html(downTime);
+            }
+        }, 1000)
+
+        //开始游戏
+        function startGame() {
+            timeInt = setInterval(function() {
+                if(time <= 0) {
+                    start = false;
+                    clearInterval(timeInt);
+                    $('.time_second').html('0');
+                    $('.model').fadeIn();
+                    $('.goods:not(.paaa)').remove();
+                } else {
+                    time--;
+                    $('.time_second').html(time);
+                }
+            }, 1000)
+            goodsDeal(0);
+        }
+
+        //处理下落物体
+        function goodsDeal(num) { //递归调用
+            if(!start) {
+                return false;
+            }
+            var left = Math.random() * 100 + '%';
+            var dom;
+            if(goodsArr[num].img == 'boom') {
+                dom =
+                    `<div class='boom goods' style='left:${left}'><img src='img/boom.png'></div>`
+            } else {
+                dom = `<div class='goods' style='left:${left}' data-score='${goodsArr[num].score}'><img src='${goodsArr[num].img}'></div>`
+            }
+            $('body').append(dom);
+            var leng = $('body').find('.goods').length;
+            var $this = $('.goods').eq(leng - 1);
+            var goodsWid = $this.width();
+            $this.animate({
+                bottom: '1rem'
+            }, 3000, 'linear', function() {
+                if(!start) {
+                    return false;
+                }
+                var a = $('.game_car').offset().left - $this.offset().left - goodsWid / 2;
+                var b = $this.offset().left - $('.game_car').offset().left - carWid + goodsWid / 2;
+                if(Math.abs(a) + Math.abs(b) == carWid) {
+                    if($this.hasClass('boom')) { //接到炸弹
+//                        $this.addClass('paaa').find('img').attr('src', '../../resource/img/skygift/gift_paaa.png');
+                        $('.goods:not(.paaa)').remove();
+                        clearInterval(timeInt);
+                        $('.time').html('0');
+                        start = false;
+                        $('.model').fadeIn();
+                    } else {
+                        score += $this.data('score') * 1;
+                        $('.score').html(score + '分');
+                        $this.remove();
+                    }
+                } else {
+                    $this.animate({
+                        bottom: '-100%',
+                        opacity: 0
+                    }, 3000, 'linear', function() {
+                        this.remove();
+                    })
+                }
+            });
+
+            setTimeout(function() {
+                if(num >= goodsArr.length - 1) {
+                    num = 0;
+                } else {
+                    num++
+                }
+                goodsDeal(num);
+            }, parseInt(Math.random() * (1000 / level)))
+        }
+
+        //处理小车移动
+        $('.game_conduct').on('touchmove', function(e) {
+            e.preventDefault();
+            if(!start) {
+                return false;
+            }
+            $('.game_car').css('left', e.originalEvent.targetTouches[0].clientX / width * 100 + '%')
+        });
+        $('.game_conduct').on('touchstart', function(e) {
+            if(start) {
+                e.preventDefault();
+            }
+        });
+
+    });
+    $('.ranking_list').on('tap',function () {
+        toNewPage('game_ranking.html')
+    });
+
+    $('.play_once').on('tap', function () {
+        location.reload()
+    })
+
+</script>
+</html>

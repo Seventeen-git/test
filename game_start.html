@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>游戏首页</title>
+    <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/zhq.css"/>
+
+</head>
+<body class="game_start">
+<div class="game_container">
+    <div class="game_logo">
+        <img src="img/logo.png" alt="">
+    </div>
+    <div class="game_txt">
+        <img src="img/font_text.png" alt="">
+    </div>
+    <div class="game_btn">
+        <img src="img/start_button.png" alt="">
+    </div>
+</div>
+
+</body>
+<script src="js/jquery-1.11.0.js"></script>
+<script src="js/urlparas.js"></script>
+<script src="js/mui.js"></script>
+<script src="js/common.js"></script>
+<script>
+    $(".game_btn").on('tap',function () {
+        toNewPage('game_conduct.html')
+    })
+</script>
+</html>
